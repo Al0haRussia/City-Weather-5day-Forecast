@@ -25,6 +25,6 @@ THEN I am presented with the last searched city forecast
 
 ![Weather Dashboard](https://user-images.githubusercontent.com/70537665/103943805-8c831380-50e7-11eb-84a5-1e2daed8974c.gif)
 
-<h2>Links to the repository and website:</h2>
+<h2>Link to the website:</h2>
 
 <a href="https://al0harussia.github.io/City-Weather-5day-Forecast/">Website</a>

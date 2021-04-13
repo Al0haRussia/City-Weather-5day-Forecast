@@ -27,7 +27,7 @@ THEN I am presented with the last searched city forecast
 
 <h2>Link to the website:</h2>
 
-<a href="https://al0harussia.github.io/City-Weather-5day-Forecast/">Website</a>
+<a href="https://gateskyle.github.io/City-Weather-5day-Forecast/">Website</a>
 
 <br>
 <br>

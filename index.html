@@ -1,190 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/style.css" />
-    <!-- Social Button Styles -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./assets/style/style.css">
     <title>Weather Dashboard</title>
 </head>
-
 <body>
-
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top justify-content-center">
-            <h2 class="nav-header">5 Day Weather Dashboard</h2>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand">Weather Dashboard</a>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" id='citySearch' value='' aria-label="Search">
+            <button class="btn btn-outline-success" type="button">Search City</button>
+          </form>
+        </div>
     </nav>
 
-    <div class="container-fluid h-100">
-        <div class="row min-vh-100">
-            <!-- Input and City Search Container -->
-            <div class="col-md-4 bg-light">
-                <div class="row">
-                    <div class="col-md-12 py-3" id="current-location-container">
-                        <div class="d-flex align-text-middle justify-content-between">
-                            <h6 class="mt-2 font-weight-bold">
-                                Current Location Forecast:
-                            </h6>
-                            <button class="btn btn-success btn-sm" id="current-location-button">
-                <i class="fas fa-map-marker-alt"></i>
-                Get Location
-              </button>
-                        </div>
-                        <!-- Current Weather Button and functionality CREDIT: Justin Le / GitHub-twopcz -->
-                        <div class="card text-white bg-secondary mt-3" id="current-location-weather">
-                            <div class="card-body pt-2">
-                                <h5 class="card-title" id="current-location"></h5>
-                                <div class="weather-image-container">
-                                    <img alt="current-locationweather-image" id="weather-image-current-location" />
-                                </div>
-                                <p class="card-text" id="temp-current-location"></p>
-                                <p class="card-text" id="humidity-current-location"></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- City Search -->
-                <div class="row">
-                    <div class="col-lg-8" id="city-search-container">
-                        <label class="font-weight-bold pt-2" for="city-search">Search for a City:</label>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" id="search-input" />
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button" id="search-button">
-                  <i class="fas fa-search"></i>
-                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- City Search History -->
-                <div class="row">
-                    <div class="col-md-12 h-100 pb-3" id="search-history-container">
-                        <div class="card w-100">
-                            <ul class="list-group list-group-flush" id="search-history"></ul>
-                        </div>
-                        <div class="d-flex justify-content-left pt-3" id="clear-button-container">
-                            <button class="btn btn-danger" id="clear-button">Clear History</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Main Weather Display Container -->
-            <div class="col-md-8 px-4" id="weather-container">
-                <div class="row pt-5" id="error-div">
-                    <h2 class="font-weight-bold" id="error">City not found.</h2>
-                </div>
-                <div class="row pt-3" id="current-forecast">
-                    <div class="col-md-12 box bg-secondary text-white">
-                        <div class="d-flex align-items-center pt-4" id="city-name-container">
-                            <h2 class="font-weight-bold" id="city-name"></h2>
-                            <div class="weather-image-container">
-                                <img alt="weather-image" id="weather-image" />
-                            </div>
-                        </div>
-                        <div class="pb-4" id="current-weather-container">
-                            <div id="temperature"></div>
-                            <div id="humidity"></div>
-                            <div id="wind-speed"></div>
-                            <div id="uv-index"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Five Day Forecast Display Container -->
-                <div class="row flex-column pt-3" id="five-day-forecast-container">
-                    <div class="row no-gutters">
-                        <h4 class="font-weight-bold">5-Day Forecast:</h4>
-                    </div>
-                    <div class="row no-gutters">
-                        <!-- Day 1 -->
-                        <div class="col-lg mx-1 pb-2">
-                            <div class="card text-white bg-secondary" id="day-1">
-                                <div class="card-body">
-                                    <h5 class="card-title" id="date-1"></h5>
-                                    <div class="weather-image-container">
-                                        <img alt="day-1-weather-image" id="weather-image-1" />
-                                    </div>
-                                    <p class="card-text" id="temp-1"></p>
-                                    <p class="card-text" id="humidity-1"></p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Day 2 -->
-                        <div class="col-lg mx-1 pb-2">
-                            <div class="card text-white bg-secondary" id="day-2">
-                                <div class="card-body">
-                                    <h5 class="card-title" id="date-2"></h5>
-                                    <div class="weather-image-container">
-                                        <img alt="day-2-weather-image" id="weather-image-2" />
-                                    </div>
-                                    <p class="card-text" id="temp-2"></p>
-                                    <p class="card-text" id="humidity-2"></p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Day 3 -->
-                        <div class="col-lg mx-1 pb-2">
-                            <div class="card text-white bg-secondary" id="day-3">
-                                <div class="card-body">
-                                    <h5 class="card-title" id="date-3"></h5>
-                                    <div class="weather-image-container">
-                                        <img alt="day-3-weather-image" id="weather-image-3" />
-                                    </div>
-                                    <p class="card-text" id="temp-3"></p>
-                                    <p class="card-text" id="humidity-3"></p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Day 4 -->
-                        <div class="col-lg mx-1 pb-2">
-                            <div class="card text-white bg-secondary" id="day-4">
-                                <div class="card-body">
-                                    <h5 class="card-title" id="date-4"></h5>
-                                    <div class="weather-image-container">
-                                        <img alt="day-4-weather-image" id="weather-image-4" />
-                                    </div>
-                                    <p class="card-text" id="temp-4"></p>
-                                    <p class="card-text" id="humidity-4"></p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Day 5 -->
-                        <div class="col-lg mx-1 pb-2">
-                            <div class="card text-white bg-secondary" id="day-5">
-                                <div class="card-body">
-                                    <h5 class="card-title" id="date-5"></h5>
-                                    <div class="weather-image-container">
-                                        <img alt="day-5-weather-image" id="weather-image-5" />
-                                    </div>
-                                    <p class="card-text" id="temp-5"></p>
-                                    <p class="card-text" id="humidity-5"></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="row g-0">
+        <div class="col-6 col-md-4 searchResults">
+            Previously Searched Cities:
+            <ul id="searchHistory">
+            </ul>
+        </div>
+    
+        <div class="col-sm-6 col-md-8">
+            <h1>Current Weather:</h1>
+            <div class="currentWeather"></div>
+            </br>
+            <h1>Five Day Forecast:</h1>
+            <div class="row fiveDay">
             </div>
         </div>
     </div>
 
-
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/53455dd245.js" crossorigin="anonymous"></script>
-    <script src="assets/script.js"></script>
-
+    <footer class="footer">
+        <div class="footercontainer">
+            <span class="text-muted">
+                Kyle Gates © 2021
+            </span>
+        </div>
+    </footer>
 </body>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="./assets/scripts/script.js"></script>
 </html>

@@ -1,3 +1,9 @@
+body {
+    background-image: url('../images/weather-background.jpg');
+    background-size: cover;
+}
+
+
 .searchResults {
     position: inherit;
     background-color: #e3e3e3;

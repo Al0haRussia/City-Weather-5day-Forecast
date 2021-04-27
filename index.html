@@ -10,21 +10,21 @@
     <title>Weather Dashboard</title>
 </head>
 <body>
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-dark bg-secondary">
         <div class="container-fluid">
-          <a class="navbar-brand">Weather Dashboard</a>
+          <a class="navbar-brand"><h3>Weather Dashboard</h3></a>
           <form class="d-flex">
             <input class="form-control me-2" type="search" id='citySearch' value='' aria-label="Search">
-            <button class="btn btn-outline-success" type="button">Search City</button>
+            <button class="btn btn-outline-light" type="button">Search City</button>
           </form>
         </div>
     </nav>
 
     <div class="row g-0">
         <div class="col-6 col-md-4 searchResults">
-            Previously Searched Cities:
-            <ul id="searchHistory">
-            </ul>
+            <h4>Previously Searched Cities:</h4>
+            <div id="searchHistory">
+            </div>
         </div>
     
         <div class="col-sm-6 col-md-8">

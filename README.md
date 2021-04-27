@@ -21,9 +21,7 @@ THEN I am presented with the last searched city forecast
 
 <h2>The following is a demo of the website:</h2>
 
-![Weather Dashboard (2)](https://user-images.githubusercontent.com/70537665/103943641-45951e00-50e7-11eb-8c95-f2da3fd80e3a.gif)
-
-![Weather Dashboard](https://user-images.githubusercontent.com/70537665/103943805-8c831380-50e7-11eb-84a5-1e2daed8974c.gif)
+![Weather Dashboard (1)](https://user-images.githubusercontent.com/70537665/116310690-305c0200-a75f-11eb-9dea-405f90322b1d.gif)
 
 <h2>Link to the website:</h2>
 
